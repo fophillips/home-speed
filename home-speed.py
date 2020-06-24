@@ -11,7 +11,7 @@ def main():
     upload, download = st.upload(), st.download()
     now = datetime.now(dateutil.tz.tzutc())
 
-    print(f"{upload=} {download=} {now=}")
+    print(f"upload={upload} download={download} now={now}")
 
     rows = [{
         "measurement": "network_speed",
@@ -33,8 +33,8 @@ def main():
         }
     }]
 
-#    client = InfluxDBClient('influxdb', 8086, 'influxdb', 'influxdb', 'db0')
-#    client.write_points(rows)
+    client = InfluxDBClient('pi', 8086, 'influxdb', 'influxdb', 'db0')
+    client.write_points(rows)
     print("Complete!")
 
 
